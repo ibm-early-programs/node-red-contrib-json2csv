@@ -27,7 +27,7 @@ module.exports = function (RED) {
     var json = null;
 
     temp.open({
-      suffix: '.txt'
+      suffix: '.json'
     }, function(err, info) {
       if (err) {
         node.status({
@@ -48,6 +48,7 @@ module.exports = function (RED) {
       // gets read in as json data, so no buffering or conversion
       // is required.
       if (msg.payload instanceof Buffer) {
+        //console.log('Its a Buffer');
         fs.writeFile(info.path, msg.payload, function(err) {
           if (err) {
             node.status({
@@ -73,6 +74,8 @@ module.exports = function (RED) {
         // is where it gets processed. Yes, it suprised me also, all the
         // buffering is only required if the file extension is not .json,
         // but still contains json data.
+        //console.log('Its not a buffer');
+        //console.log(typeof msg.payload);
         json = msg.payload;
         cb(null, json);
       }
