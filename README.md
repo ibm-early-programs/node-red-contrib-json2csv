@@ -1,6 +1,5 @@
 # Node-RED Contrib json2csv
 
-Writer Node for Facebook Messenger
 [Node-RED](http://nodered.org) wrapper to the jsonexport npm module. This
 allows for conversion of a json input into a csv file, without needing to
 specify the column headers. The headers are populated automatically, making
